@@ -4,7 +4,7 @@ var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "sy
 import { jsx, jsxs } from "react/jsx-runtime";
 import React, { PureComponent } from "react";
 import { createRoot } from "react-dom/client";
-import { debounce as r } from "../../node_modules/ts-debounce/dist/src/index.esm.js";
+import { debounce } from "ts-debounce";
 import { scaledToViewport, viewportToScaled } from "../lib/coordinates.js";
 import { getAreaAsPNG } from "../lib/get-area-as-png.js";
 import { getBoundingRect } from "../lib/get-bounding-rect.js";
@@ -228,13 +228,13 @@ class PdfHighlighter extends PureComponent {
         )
       );
     });
-    __publicField(this, "debouncedAfterSelection", r(this.afterSelection, 500));
+    __publicField(this, "debouncedAfterSelection", debounce(this.afterSelection, 500));
     __publicField(this, "handleScaleValue", () => {
       if (this.viewer) {
         this.viewer.currentScaleValue = this.props.pdfScaleValue;
       }
     });
-    __publicField(this, "debouncedScaleValue", r(this.handleScaleValue, 500));
+    __publicField(this, "debouncedScaleValue", debounce(this.handleScaleValue, 500));
     if (typeof ResizeObserver !== "undefined") {
       this.resizeObserver = new ResizeObserver(this.debouncedScaleValue);
     }
@@ -254,7 +254,7 @@ class PdfHighlighter extends PureComponent {
   }
   async init() {
     const { pdfDocument, pdfViewerOptions } = this.props;
-    const pdfjs = await import("../../node_modules/pdfjs-dist/web/pdf_viewer.js");
+    const pdfjs = await import("pdfjs-dist/web/pdf_viewer.mjs");
     const eventBus = new pdfjs.EventBus();
     const linkService = new pdfjs.PDFLinkService({
       eventBus,
