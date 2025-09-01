@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, type ReactElement } from "react";
 
 interface Props {
   onMoveAway: () => void;
   paddingX: number;
   paddingY: number;
-  children: JSX.Element;
+  children: ReactElement;
 }
 
 export class MouseMonitor extends Component<Props> {

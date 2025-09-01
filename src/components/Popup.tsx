@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, type ReactNode, type ReactElement } from "react";
 import { MouseMonitor } from "./MouseMonitor";
 
 interface Props {
-  onMouseOver: (content: JSX.Element) => void;
-  popupContent: JSX.Element;
+  onMouseOver: (content: ReactNode) => void;
+  popupContent: ReactElement;
   onMouseOut: () => void;
-  children: JSX.Element;
+  children: ReactNode;
 }
 
 export function Popup({
@@ -33,7 +33,7 @@ export function Popup({
             paddingY={30}
           >
             {popupContent}
-          </MouseMonitor>,
+          </MouseMonitor>
         );
       }}
       onMouseOut={() => {

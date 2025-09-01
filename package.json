@@ -37,8 +37,8 @@
     "react-dom": ">=18.0.0"
   },
   "dependencies": {
-    "pdfjs-dist": "4.4.168",
-    "react-rnd": "^10.4.11",
+    "pdfjs-dist": "5.4.149",
+    "react-rnd": "^10.5.2",
     "ts-debounce": "^4.0.0"
   },
   "repository": {
@@ -50,16 +50,16 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.0",
-    "@playwright/test": "^1.45.1",
-    "@types/node": "^20.14.10",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "playwright": "^1.45.1",
-    "postcss-import": "^16.1.0",
-    "typescript": "^5.6.2",
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.2",
+    "playwright": "^1.55.0",
+    "postcss-import": "^16.1.1",
+    "typescript": "^5.9.2",
     "vite": "^5.3.3",
-    "vite-plugin-dts": "^4.1.1"
+    "vite-plugin-dts": "^4.5.4"
   },
   "homepage": "https://github.com/agentcooper/react-pdf-highlighter#readme"
 }

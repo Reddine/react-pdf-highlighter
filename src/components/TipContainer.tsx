@@ -1,9 +1,16 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+  isValidElement,
+} from "react";
 import styles from "../style/TipContainer.module.css";
 import type { LTWHP } from "../types";
 
 interface Props {
-  children: JSX.Element | null;
+  children: ReactNode;
   style: { top: number; left: number; bottom: number };
   scrollTop: number;
   pageBoundingRect: LTWHP;
@@ -51,14 +58,14 @@ export function TipContainer({
   }, [updatePosition]);
 
   const childrenWithProps = React.Children.map(children, (child) =>
-    child != null
+    child != null && isValidElement(child)
       ? React.cloneElement(child, {
           onUpdate: handleUpdate,
           popup: {
             position: shouldMove ? "below" : "above",
           },
-        })
-      : null,
+        } as any)
+      : child
   );
 
   return (

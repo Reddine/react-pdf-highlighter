@@ -1,15 +1,15 @@
 import { GlobalWorkerOptions, getDocument } from "pdfjs-dist";
 import type { PDFDocumentProxy } from "pdfjs-dist";
-import React, { Component } from "react";
+import React, { Component, type ReactNode, type ReactElement } from "react";
 
 interface Props {
   /** See `GlobalWorkerOptionsType`. */
   workerSrc: string;
 
   url: string;
-  beforeLoad: JSX.Element;
-  errorMessage?: JSX.Element;
-  children: (pdfDocument: PDFDocumentProxy) => JSX.Element;
+  beforeLoad: ReactNode;
+  errorMessage?: ReactElement;
+  children: (pdfDocument: PDFDocumentProxy) => ReactNode;
   onError?: (error: Error) => void;
   cMapUrl?: string;
   cMapPacked?: boolean;
@@ -99,8 +99,8 @@ export class PdfLoader extends Component<Props, State> {
         {error
           ? this.renderError()
           : !pdfDocument || !children
-            ? beforeLoad
-            : children(pdfDocument)}
+          ? beforeLoad
+          : children(pdfDocument)}
       </>
     );
   }
@@ -108,7 +108,9 @@ export class PdfLoader extends Component<Props, State> {
   renderError() {
     const { errorMessage } = this.props;
     if (errorMessage) {
-      return React.cloneElement(errorMessage, { error: this.state.error });
+      return React.cloneElement(errorMessage, {
+        error: this.state.error,
+      } as any);
     }
 
     return null;
